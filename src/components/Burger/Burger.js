@@ -5,8 +5,9 @@ import classes from './Burger.module.css';
 const burger = (props) => (
     <div className={classes.Burger}>
         <BurgerIngredients type="bread-top"/>
+        <BurgerIngredients type="chicken"/>
         <BurgerIngredients type="cheese"/>
-        <BurgerIngredients type="meat"/>
+        <BurgerIngredients type="patty"/>
         <BurgerIngredients type="bread-bottom"/>
     </div>
 );
