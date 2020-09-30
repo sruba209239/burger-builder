@@ -47,12 +47,18 @@ class BurgerBuilder extends Component {
   };
 
   render() {
+    const checkForDisable = { ...this.state.ingredients };
+    for (const key in checkForDisable) {
+      checkForDisable[key] = checkForDisable[key] <= 0;
+    }
+
     return (
       <Auxiliary>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           dereaseCount={this.dereaseCountHandler}
           increaseCount={this.increaseCountHandler}
+          checkForDisable={checkForDisable}
         />
       </Auxiliary>
     );

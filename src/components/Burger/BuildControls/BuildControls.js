@@ -17,6 +17,7 @@ const buildControls = (props) => (
         label={el.label}
         dereaseCount={() => props.dereaseCount(el.type)}
         increaseCount={() => props.increaseCount(el.type)}
+        checkForDisable={props.checkForDisable[el.type]}
       />
     ))}
   </div>
