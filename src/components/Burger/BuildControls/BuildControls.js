@@ -12,7 +12,12 @@ const controls = [
 const buildControls = (props) => (
   <div className={classes.BuildControls}>
     {controls.map((el) => (
-      <BuildControl key={el.label} label={el.label} />
+      <BuildControl
+        key={el.label}
+        label={el.label}
+        dereaseCount={() => props.dereaseCount(el.type)}
+        increaseCount={() => props.increaseCount(el.type)}
+      />
     ))}
   </div>
 );

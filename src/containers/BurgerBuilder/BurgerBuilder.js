@@ -3,6 +3,13 @@ import Auxiliary from "../../hoc/Auxiliary";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 
+const INGREDIENT_PRICES = {
+  salad: 0.5,
+  chicken: 0.7,
+  cheese: 0.4,
+  patty: 1.3,
+};
+
 class BurgerBuilder extends Component {
   //   constructor(props) {
   //     super(props);
@@ -16,13 +23,37 @@ class BurgerBuilder extends Component {
       cheese: 0,
       patty: 0,
     },
+    totalPrice: 4,
+  };
+
+  dereaseCountHandler = (type) => {
+    if (this.state.ingredients[type] > 0) {
+      const updatedIngredients = {
+        ...this.state.ingredients,
+      };
+      updatedIngredients[type] = this.state.ingredients[type] - 1;
+      const newPrice = this.state.totalPrice - INGREDIENT_PRICES[type];
+      this.setState({ ingredients: updatedIngredients, totalPrice: newPrice });
+    }
+  };
+
+  increaseCountHandler = (type) => {
+    const updatedIngredients = {
+      ...this.state.ingredients,
+    };
+    updatedIngredients[type] = this.state.ingredients[type] + 1;
+    const newPrice = this.state.totalPrice + INGREDIENT_PRICES[type];
+    this.setState({ ingredients: updatedIngredients, totalPrice: newPrice });
   };
 
   render() {
     return (
       <Auxiliary>
         <Burger ingredients={this.state.ingredients} />
-        <BuildControls />
+        <BuildControls
+          dereaseCount={this.dereaseCountHandler}
+          increaseCount={this.increaseCountHandler}
+        />
       </Auxiliary>
     );
   }
