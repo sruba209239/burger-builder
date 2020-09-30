@@ -33,7 +33,10 @@ class BurgerBuilder extends Component {
       };
       updatedIngredients[type] = this.state.ingredients[type] - 1;
       const newPrice = this.state.totalPrice - INGREDIENT_PRICES[type];
-      this.setState({ ingredients: updatedIngredients, totalPrice: newPrice });
+      this.setState({
+        ingredients: updatedIngredients,
+        totalPrice: newPrice,
+      });
     }
   };
 
@@ -43,7 +46,10 @@ class BurgerBuilder extends Component {
     };
     updatedIngredients[type] = this.state.ingredients[type] + 1;
     const newPrice = this.state.totalPrice + INGREDIENT_PRICES[type];
-    this.setState({ ingredients: updatedIngredients, totalPrice: newPrice });
+    this.setState({
+      ingredients: updatedIngredients,
+      totalPrice: newPrice,
+    });
   };
 
   render() {
@@ -59,6 +65,7 @@ class BurgerBuilder extends Component {
           dereaseCount={this.dereaseCountHandler}
           increaseCount={this.increaseCountHandler}
           checkForDisable={checkForDisable}
+          price={this.state.totalPrice}
         />
       </Auxiliary>
     );
